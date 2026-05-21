@@ -1,0 +1,9 @@
+✅ Training data loaded: 278205 deliveries.
+✅ Players data loaded: 250 players.
+✅ Matches data loaded: 1169 matches.
+✅ MyModel class loaded successfully.
+✅ Model training (fit) with players and matches data completed.
+✅ Test file loaded: 2 rows.
+✅ Predictions generated.
+✅ Submission written: 2 predictions.
+🏏 Evaluation complete — SUCCESS
