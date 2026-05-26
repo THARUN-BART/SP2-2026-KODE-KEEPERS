@@ -285,13 +285,14 @@ _HOME_GROUNDS = {
     "Delhi Capitals":              "kotla",
     "Delhi Daredevils":            "kotla",
     "Rajasthan Royals":            "sawai",
-    "Punjab Kings":                "bindra",
+    "Punjab Kings":                "mullanpur",   # ← updated: new home since 2024
     "Kings XI Punjab":             "bindra",
     "Sunrisers Hyderabad":         "uppal",
     "Gujarat Titans":              "narendra",
     "Lucknow Super Giants":        "ekana",
 }
 
+# ─── Venue nature ─────────────────────────────────────────────────────────── #
 _VENUE_NATURE = {
     "chinnaswamy": "aggressive batting",
     "wankhede":    "batting + dew",
@@ -303,9 +304,11 @@ _VENUE_NATURE = {
     "ekana":       "slow-balanced",
     "sawai":       "balanced",
     "barsapara":   "batting",
-    "himachal":    "pace friendly",
-    "bindra":      "balanced",
-}
+  
+    "himachal":    "pace friendly",  
+    "mullanpur":   "balanced",        
+    "bindra":      "balanced",      
+}   
 
 _NATURE_SCORE = {
     "aggressive batting": 1.0,
@@ -314,7 +317,7 @@ _NATURE_SCORE = {
     "batting + dew":      0.8,
     "batting":            0.7,
     "balanced":           0.0,
-    "pace friendly":     -0.4,
+    "pace friendly":     -0.6,      
     "spin-balanced":     -0.3,
     "spin/bowling":      -0.6,
     "slow-balanced":     -0.4,
@@ -322,63 +325,70 @@ _NATURE_SCORE = {
 }
 
 _VENUE_HOME_OVERRIDE = {
-    "chepauk": (0.90, -0.15),
-    "ekana":   (0.95, -0.20),
-    "bindra":  (1.00, -0.10),
+    "chepauk":    (0.90, -0.15),
+    "ekana":      (0.95, -0.20),
+    "bindra":     (1.00, -0.10),
+    "mullanpur":  (1.00, -0.10),
 }
 
 _AWAY_DISCOUNT = {
     "chinnaswamy": 0.39, "uppal": 0.30, "kotla": 0.28,
     "eden": 0.18, "wankhede": 0.18, "narendra": 0.12,
-    "barsapara": 0.18, "himachal": 0.20, "sawai": 0.15,
+    "barsapara": 0.18, "himachal": 0.08,  # Dharamsala: modest advantage for pace teams visiting
+    "sawai": 0.15,
     "chepauk": 0.05, "ekana": 0.05, "bindra": 0.10,
+    "mullanpur": 0.10,
 }
 
 _TEAM_PP_AGGRESSION = {
-    "Sunrisers Hyderabad":         1.35,
-    "Royal Challengers Bengaluru": 1.20,
+    "Sunrisers Hyderabad":         1.40,   # ↑ Head + Abhishek historically fastest starters
+    "Royal Challengers Bengaluru": 1.28,   # ↑ Salt + Kohli/Patidar, 2026 season form
     "Delhi Capitals":              1.18,
     "Kolkata Knight Riders":       1.08,
     "Punjab Kings":                1.12,
-    "Rajasthan Royals":            1.10,
+    "Rajasthan Royals":            1.14,   # ↑ Jaiswal + Suryavanshi very aggressive
     "Mumbai Indians":              1.02,
     "Lucknow Super Giants":        1.00,
-    "Gujarat Titans":              0.98,
+    "Gujarat Titans":              0.96,   # ↓ GT more measured; Gill/Sudharsan methodical
     "Chennai Super Kings":         0.97,
 }
 
 _TEAM_PP_BOWLING_QUALITY = {
-    "Mumbai Indians":              0.82,
-    "Royal Challengers Bengaluru": 0.85,
+    "Mumbai Indians":              0.80,
+    "Royal Challengers Bengaluru": 0.82,   # ↑ Hazlewood + Bhuvi among best PP attacks in 2026
+    "Gujarat Titans":              0.84,   # ↑ Rabada + Siraj very effective in PP
     "Kolkata Knight Riders":       0.90,
-    "Rajasthan Royals":            0.90,
+    "Rajasthan Royals":            0.88,   # ↑ Archer/Sandeep/Maphaka tight in PP
     "Delhi Capitals":              0.94,
-    "Sunrisers Hyderabad":         0.95,
-    "Gujarat Titans":              0.96,
-    "Punjab Kings":                0.97,
+    "Sunrisers Hyderabad":         0.93,
+    "Punjab Kings":                0.95,
     "Lucknow Super Giants":        1.00,
     "Chennai Super Kings":         1.02,
 }
 
-
-_TEAM_BATTING_CORRECTION_2025 = {
-    "Lucknow Super Giants":        +14.0, 
-    "Rajasthan Royals":            +11.0,  
-    "Chennai Super Kings":         +9.5,   
-    "Gujarat Titans":              +5.5,   
-    "Punjab Kings":                +5.5,    
-    "Mumbai Indians":              +4.0,    
-    "Kolkata Knight Riders":       +2.0,   
-    "Delhi Capitals":              +2.0,   
-    "Royal Challengers Bengaluru": +0.5,  
-    "Sunrisers Hyderabad":         -2.0,   
+# ─── Team batting correction (updated for IPL 2026 season) ──────────────── #
+# Based on each team's 2026 league stage PP performance vs baseline
+_TEAM_BATTING_CORRECTION_2026 = {
+    "Royal Challengers Bengaluru": +12.5,  # ↑↑ dominant season, finished 1st
+    "Gujarat Titans":              +8.0,   # ↑ solid; Gill/Buttler/Sudharsan
+    "Sunrisers Hyderabad":         +6.5,   # consistent but not as explosive as 2024
+    "Rajasthan Royals":            +5.0,   # Jaiswal + Parag in form
+    "Lucknow Super Giants":        +14.0,
+    "Chennai Super Kings":         +9.5,
+    "Punjab Kings":                +5.5,
+    "Mumbai Indians":              +4.0,
+    "Kolkata Knight Riders":       +2.0,
+    "Delhi Capitals":              +2.0,
 }
 
-_INN2_CHASE_AGGRESSION_BASE = 6.0 
-_INN2_CHASE_HIGH_TARGET_THRESH = 65.0 
+_INN2_CHASE_AGGRESSION_BASE = 6.0
+_INN2_CHASE_HIGH_TARGET_THRESH = 65.0
 _INN2_CHASE_HIGH_TARGET_BONUS  = 5.0
 
+# ─── Matchup calibration ──────────────────────────────────────────────────── #
+# Added Dharamsala (himachal) and Mullanpur (mullanpur) matchups for 2026 playoffs
 _MATCHUP_CALIBRATION = {
+    # ── Existing venue matchups ─────────────────────────────────────────── #
     ("Mumbai Indians", "Chennai Super Kings", "wankhede"):              {"inn1_adj": +5.5,  "inn2_adj": +3.5,  "confidence": 0.65},
     ("Chennai Super Kings", "Mumbai Indians", "wankhede"):              {"inn1_adj": -4.0,  "inn2_adj": -2.5,  "confidence": 0.60},
     ("Royal Challengers Bengaluru", "Gujarat Titans", "chinnaswamy"):   {"inn1_adj": +8.0,  "inn2_adj": +5.5,  "confidence": 0.72},
@@ -403,17 +413,33 @@ _MATCHUP_CALIBRATION = {
     ("Mumbai Indians", "Chennai Super Kings", "chepauk"):               {"inn1_adj": -3.0,  "inn2_adj": -2.0,  "confidence": 0.60},
     ("Punjab Kings", "Delhi Capitals", "kotla"):                        {"inn1_adj": +12.0, "inn2_adj": +8.0,  "confidence": 0.70},
     ("Sunrisers Hyderabad", "Rajasthan Royals", "uppal"):               {"inn1_adj": +10.0, "inn2_adj": +7.0,  "confidence": 0.72},
+
+
+    ("Royal Challengers Bengaluru", "Gujarat Titans", "himachal"):      {"inn1_adj": +5.0,  "inn2_adj": +3.5,  "confidence": 0.62},
+    ("Gujarat Titans", "Royal Challengers Bengaluru", "himachal"):      {"inn1_adj": -4.5,  "inn2_adj": -2.5,  "confidence": 0.60},
+
+   
+    ("Sunrisers Hyderabad", "Rajasthan Royals", "mullanpur"):           {"inn1_adj": +4.0,  "inn2_adj": +2.5,  "confidence": 0.58},
+    ("Rajasthan Royals", "Sunrisers Hyderabad", "mullanpur"):           {"inn1_adj": +2.5,  "inn2_adj": +4.0,  "confidence": 0.60}, 
+
+   
+    ("Punjab Kings", "Rajasthan Royals", "mullanpur"):                  {"inn1_adj": +3.5,  "inn2_adj": +2.0,  "confidence": 0.55},
+    ("Rajasthan Royals", "Punjab Kings", "mullanpur"):                  {"inn1_adj": +1.5,  "inn2_adj": +2.5,  "confidence": 0.52},
+    ("Punjab Kings", "Sunrisers Hyderabad", "mullanpur"):               {"inn1_adj": +2.0,  "inn2_adj": +1.5,  "confidence": 0.50},
 }
 
+# ─── High / low scoring venue prior (added mullanpur + himachal) ─────────── #
 _HIGH_SCORING_VENUES = {
     "kotla": 85.0, "uppal": 87.5, "chinnaswamy": 80.0,
     "wankhede": 75.0, "narendra": 80.0, "eden": 75.0,
-    "barsapara": 80.0, "himachal": 75.0, "sawai": 72.0,
-    "chepauk": 60.0,
+    "barsapara": 80.0, "sawai": 72.0,
+  
+    "himachal": 67.0,    
+    "mullanpur": 68.5,   
 }
 _LOW_SCORING_VENUES = {"ekana": 52.0, "bindra": 62.0}
 
-_GLOBAL_2025_PP_OFFSET = 5.5 
+_GLOBAL_2026_PP_OFFSET = 6.0  
 
 _HOME_PP_CALIBRATION = {
     ("Chennai Super Kings",         "chepauk"):      {"inn1_boost": 30.0, "inn2_boost": 12.0, "conf": 0.80},
@@ -424,11 +450,28 @@ _HOME_PP_CALIBRATION = {
     ("Mumbai Indians",              "wankhede"):     {"inn1_boost":  4.0, "inn2_boost":  2.5, "conf": 0.48},
     ("Rajasthan Royals",            "sawai"):        {"inn1_boost":  3.5, "inn2_boost":  2.0, "conf": 0.45},
     ("Lucknow Super Giants",        "ekana"):        {"inn1_boost": -2.0, "inn2_boost": -1.5, "conf": 0.45},
-    ("Punjab Kings",                "bindra"):       {"inn1_boost":  2.5, "inn2_boost":  1.5, "conf": 0.42},
+    # Punjab Kings now at Mullanpur
+    ("Punjab Kings",                "mullanpur"):    {"inn1_boost":  3.0, "inn2_boost":  2.0, "conf": 0.45},
+    ("Punjab Kings",                "bindra"):       {"inn1_boost":  1.5, "inn2_boost":  1.0, "conf": 0.35},  # legacy
     ("Gujarat Titans",              "narendra"):     {"inn1_boost":  3.5, "inn2_boost":  2.0, "conf": 0.45},
+    # No home advantage at Dharamsala or Mullanpur for playoff teams (RCB, GT, SRH, RR)
 }
 
 _SPIN_SUPPRESSION_VENUES = {"chepauk", "ekana", "eden"}
+
+
+_PLAYOFF_PRESSURE_DISCOUNT = -4.0
+
+_DEW_INN2_BONUS = {
+    "himachal":  4.5,
+    "mullanpur": 5.0,  
+    "wankhede":  5.0,
+    "narendra":  3.5,
+    "uppal":     4.0,
+    "kotla":     3.5,
+    "chinnaswamy": 3.0,
+    "eden":      3.0,
+}
 
 VALID_VENUES = [
     'M Chinnaswamy Stadium', 'Punjab Cricket Association Stadium, Mohali',
@@ -464,7 +507,12 @@ VALID_VENUES = [
     'Himachal Pradesh Cricket Association Stadium, Dharamsala',
     'Maharaja Yadavindra Singh International Cricket Stadium, Mullanpur',
     'Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam',
+    # ↓ Additional aliases for 2026 playoff venues
+    'HPCA Stadium, Dharamsala',
+    'Himachal Pradesh Cricket Association Stadium, Dharamsala, HP',
     'Maharaja Yadavindra Singh International Cricket Stadium, New Chandigarh',
+    'New PCA Stadium, Mullanpur',
+    'PCA Stadium, Mullanpur, New Chandigarh',
 ]
 
 DELIVERIES_CSV_PATH = "/var/deliveries_updated_ipl_upto_2025.csv"
@@ -477,7 +525,7 @@ _STADIUM_VENUE_INDEX: dict = {}
 
 
 # ═══════════════════════════════════════════════════════════════════════════ #
-#  UTILITIES  (unchanged from original)                                       #
+#  UTILITIES                                                                  #
 # ═══════════════════════════════════════════════════════════════════════════ #
 
 def _normalize_venue(v: str) -> str:
@@ -503,7 +551,8 @@ def _fuzzy_match_venue(query, venue_index, threshold=0.55):
         "brabourne", "barabati", "kingsmead", "newlands", "motera",
         "mullanpur", "dharamsala", "guwahati", "visakhapatnam",
         "mohali", "sharjah", "dubai", "uppal", "jamtha", "zayed",
-        "barsapara", "vidarbha", "subrata", "shaheed",
+        "barsapara", "vidarbha", "subrata", "shaheed", "himachal",
+        "hpca", "maharaja", "yadavindra",
     }
     qt = set(q.split()) - STOP
     best_o, best_s = None, 0.0
@@ -544,7 +593,14 @@ def _is_home_ground(venue: str, bat_team: str) -> bool:
 
 def _get_venue_key(venue: str):
     nv = _normalize_venue(venue)
-    for key in list(_HIGH_SCORING_VENUES.keys()) + list(_LOW_SCORING_VENUES.keys()):
+    all_venue_keys = (
+        list(_HIGH_SCORING_VENUES.keys())
+        + list(_LOW_SCORING_VENUES.keys())
+        + ["himachal", "mullanpur", "bindra", "uppal", "chepauk",
+           "chinnaswamy", "wankhede", "eden", "narendra", "kotla",
+           "sawai", "ekana", "barsapara"]
+    )
+    for key in all_venue_keys:
         if key in nv:
             return key
     return None
@@ -570,6 +626,7 @@ def _get_stadium_data(venue: str):
 
 
 def _recency_weight(year) -> float:
+    if year >= 2026: return 25.0   
     if year >= 2025: return 20.0
     if year >= 2024: return 8.0
     if year >= 2023: return 5.0
@@ -684,31 +741,34 @@ def _get_home_pp_calibration(bat_team: str, venue_key: str):
     return 0.0, 0.0, 0.0
 
 
-# ─────────────────────────────────────────────────────────────────────────── #
-# ENHANCEMENT 4: Team batting correction helper                                #
-# ─────────────────────────────────────────────────────────────────────────── #
 def _get_team_batting_correction(team_name: str) -> float:
-    """Return the 2025-season residual correction for the batting team."""
-    for k, v in _TEAM_BATTING_CORRECTION_2025.items():
+    for k, v in _TEAM_BATTING_CORRECTION_2026.items():
         if k.lower() in team_name.lower() or team_name.lower() in k.lower():
             return v
     return 0.0
 
 
 def _get_inn2_chase_boost(inn1_score: float) -> float:
-    """Extra runs to add to inn2 prediction based on chase-pressure dynamics."""
     boost = _INN2_CHASE_AGGRESSION_BASE
     if inn1_score >= _INN2_CHASE_HIGH_TARGET_THRESH:
         boost += _INN2_CHASE_HIGH_TARGET_BONUS
     return boost
 
 
+def _get_dew_inn2_bonus(venue: str) -> float:
+    """Dew factor bonus for 2nd innings at night matches (relevant for all playoff venues)."""
+    vk = _get_venue_key(venue)
+    if vk:
+        return _DEW_INN2_BONUS.get(vk, 2.5)
+    return 2.5
+
+
 # ═══════════════════════════════════════════════════════════════════════════ #
-#  STADIUM PP DATA  (unchanged from original)                                 #
+#  STADIUM PP DATA                                                            #
 # ═══════════════════════════════════════════════════════════════════════════ #
 
 def _compute_stadium_pp_data(deliveries_df, matches_df,
-                              primary_year: int = 2024,
+                              primary_year: int = 2025,
                               lookback_years: int = 3):
     global _STADIUM_PP_DATA, _STADIUM_VENUE_INDEX
     MIN_MATCHES = 3
@@ -730,9 +790,11 @@ def _compute_stadium_pp_data(deliveries_df, matches_df,
         vm = (matches_df[["matchId", "venue"]].drop_duplicates("matchId")
               .astype({"matchId": int, "venue": str}))
         d = d.merge(vm, on="matchId", how="left")
-        d["venue"] = d["venue"].fillna("Unknown")
-    else:
+
+    if "venue" not in d.columns:
         d["venue"] = "Unknown"
+    else:
+        d["venue"] = d["venue"].fillna("Unknown")
 
     pp  = d[d["over"] < 6].copy()
     inn = (pp.groupby(["matchId", "inning", "venue", "year"], observed=True)
@@ -820,32 +882,13 @@ def _load_matches(path=MATCHES_CSV_PATH):
 # ═══════════════════════════════════════════════════════════════════════════ #
 
 class MyModel:
-    """IPL Powerplay Score Predictor — v14 (error-corrected ensemble)
-
-    Key changes vs v13:
-    - Added _TEAM_BATTING_CORRECTION_2025: per-team prior correction derived
-      from 23-match residual analysis. Addresses systematic underprediction
-      of LSG (+18), CSK (+16), RR (+14), MI (+12), SRH (+9), PK (+10).
-    - Added inn2 chase-pressure boost (_INN2_CHASE_AGGRESSION_BASE = 6 runs)
-      with extra lift when inn1 was a high-scoring target (>=65 PP runs).
-    - Raised _GLOBAL_2025_PP_OFFSET from 4.5 to 8.0 to match observed 2025
-      powerplay scoring levels.
-    - Removed upper-bound clipping that capped predictions below realistic
-      highs (80–90+ PP scores observed regularly in 2025).
-    - Blending: when a team correction is large (abs > 10), give it more
-      weight relative to the historical venue prior to prevent regression
-      to an unrealistically low mean.
-    - Ensemble meta-learner weight towards ML models when n_train >= 50,
-      otherwise fall back to heuristic blend to avoid overfit.
-    """
-
     def __init__(self):
         self._is_fitted       = False
         self._id_to_name      = {}
         self._venue_index     = {}
         self._le              = {}
-        self._latest_season   = 2025.0
-        self._recent_cutoff   = 2023.0
+        self._latest_season   = 2026.0
+        self._recent_cutoff   = 2024.0   # ↑ tighter recency window for 2026
 
         self._pp_global_avg   = 55.0
         self._pp_global_avg_r = 55.0
@@ -901,8 +944,10 @@ class MyModel:
         self._gbm  = None
         self._meta = None
 
-        # ENHANCEMENT 5: track how many training samples we have
         self._n_train = 0
+
+        # ── Playoff flag ─────────────────────────────────────────────────── #
+        self._is_playoff = False
 
     # ─────────────────────────────────────────────────────────────────────── #
     #  FIT                                                                    #
@@ -936,22 +981,20 @@ class MyModel:
             d["is_dismissal"] = d["player_dismissed"].apply(
                 lambda x: 0 if (pd.isna(x) or str(x).strip() in ("", "nan")) else 1)
 
-        # ── attach venue from matches ────────────────────────────────────── #
         if matches_df is not None and "venue" in matches_df.columns:
             vm = (matches_df[["matchId", "venue"]].drop_duplicates("matchId")
                   .astype({"matchId": int, "venue": str}))
             d = d.merge(vm, on="matchId", how="left")
-            d["venue"] = d["venue"].fillna("Unknown")
-        else:
-            d["venue"] = "Unknown"
 
-        # ── compute per-venue stadium PP data ───────────────────────────── #
+        if "venue" not in d.columns:
+            d["venue"] = "Unknown"
+        else:
+            d["venue"] = d["venue"].fillna("Unknown")
+
         _compute_stadium_pp_data(d, matches_df)
 
-        # ── powerplay slice ──────────────────────────────────────────────── #
         pp = d[d["over"] < 6].copy()
 
-        # ── match-level PP aggregation ───────────────────────────────────── #
         grp_cols = ["matchId", "inning", "batting_team", "bowling_team",
                     "venue", "year"]
         grp_cols = [c for c in grp_cols if c in pp.columns]
@@ -964,7 +1007,6 @@ class MyModel:
 
         self._n_train = len(inn_pp)
 
-        # ── global averages ──────────────────────────────────────────────── #
         self._pp_global_avg   = float(inn_pp["pp_runs"].mean())
         recent = inn_pp[inn_pp["year"] >= self._recent_cutoff]
         self._pp_global_avg_r = float(recent["pp_runs"].mean()) if len(recent) else self._pp_global_avg
@@ -973,27 +1015,22 @@ class MyModel:
         if len(yr2025) >= 5:
             self._pp_2025_avg = float(yr2025["pp_runs"].mean())
 
-        # ── venue averages ───────────────────────────────────────────────── #
         for (venue,), grp in inn_pp.groupby(["venue"], observed=True):
             self._vi_avg[venue] = float(grp["pp_runs"].mean())
             self._vi_n[venue]   = len(grp)
             rec = grp[grp["year"] >= self._recent_cutoff]
             self._vi_avg_r[venue] = float(rec["pp_runs"].mean()) if len(rec) >= 3 else self._vi_avg[venue]
-
-            # 2025-specific venue average
             v25 = grp[grp["year"] == 2025]
             if len(v25) >= 3:
                 self._pp_2025_venue[venue]   = float(v25["pp_runs"].mean())
                 self._pp_2025_n_venue[venue] = len(v25)
 
-        # ── inning-split averages ────────────────────────────────────────── #
         for (venue, inn), grp in inn_pp.groupby(["venue", "inning"], observed=True):
             key = (venue, inn)
             self._pp_inn1_avg[key] = float(grp["pp_runs"].mean())
             rec = grp[grp["year"] >= self._recent_cutoff]
             self._pp_inn1_avg_r[key] = float(rec["pp_runs"].mean()) if len(rec) >= 3 else self._pp_inn1_avg[key]
 
-        # ── team batting averages ────────────────────────────────────────── #
         if "batting_team" in inn_pp.columns:
             for (team,), grp in inn_pp.groupby(["batting_team"], observed=True):
                 self._ti_avg[team] = float(grp["pp_runs"].mean())
@@ -1001,7 +1038,6 @@ class MyModel:
                 rec = grp[grp["year"] >= self._recent_cutoff]
                 self._ti_avg_r[team] = float(rec["pp_runs"].mean()) if len(rec) >= 3 else self._ti_avg[team]
 
-        # ── team bowling averages ────────────────────────────────────────── #
         if "bowling_team" in inn_pp.columns:
             for (team,), grp in inn_pp.groupby(["bowling_team"], observed=True):
                 self._vbowl_avg[team] = float(grp["pp_runs"].mean())
@@ -1009,7 +1045,6 @@ class MyModel:
                 rec = grp[grp["year"] >= self._recent_cutoff]
                 self._vbowl_avg_r[team] = float(rec["pp_runs"].mean()) if len(rec) >= 3 else self._vbowl_avg[team]
 
-        # ── venue × team interaction ─────────────────────────────────────── #
         if "batting_team" in inn_pp.columns:
             for (venue, team), grp in inn_pp.groupby(["venue", "batting_team"], observed=True):
                 self._vt_avg[(venue, team)] = float(grp["pp_runs"].mean())
@@ -1017,7 +1052,6 @@ class MyModel:
                 rec = grp[grp["year"] >= self._recent_cutoff]
                 self._vt_avg_r[(venue, team)] = float(rec["pp_runs"].mean()) if len(rec) >= 3 else self._vt_avg[(venue, team)]
 
-        # ── matchup (bat × bowl) ─────────────────────────────────────────── #
         if "batting_team" in inn_pp.columns and "bowling_team" in inn_pp.columns:
             for (bt, bwt), grp in inn_pp.groupby(["batting_team", "bowling_team"], observed=True):
                 self._mu_avg[(bt, bwt)] = float(grp["pp_runs"].mean())
@@ -1025,7 +1059,6 @@ class MyModel:
                 rec = grp[grp["year"] >= self._recent_cutoff]
                 self._mu_avg_r[(bt, bwt)] = float(rec["pp_runs"].mean()) if len(rec) >= 3 else self._mu_avg[(bt, bwt)]
 
-        # ── inning differential ──────────────────────────────────────────── #
         inn1 = inn_pp[inn_pp["inning"] == 1].set_index("matchId")["pp_runs"]
         inn2 = inn_pp[inn_pp["inning"] == 2].set_index("matchId")["pp_runs"]
         common = inn1.index.intersection(inn2.index)
@@ -1038,7 +1071,6 @@ class MyModel:
         if len(rc) >= 5:
             self._pp_global_diff_r = float((ri2.loc[rc] - ri1.loc[rc]).mean())
 
-        # ── toss adjustment ──────────────────────────────────────────────── #
         if matches_df is not None and "toss_decision" in matches_df.columns:
             try:
                 tm = matches_df.copy()
@@ -1054,29 +1086,16 @@ class MyModel:
                 if len(bat_first) >= 5 and len(field_first) >= 5:
                     self._toss_inn2_adj = float(
                         field_first["pp_runs"].mean() - bat_first["pp_runs"].mean())
-                bat_first_inn1 = inn_with_toss[
-                    (inn_with_toss["inning"] == 1) &
-                    (inn_with_toss["toss_winner"] == inn_with_toss.get("batting_team", ""))]
-                if len(bat_first_inn1) >= 5:
-                    others = inn_with_toss[
-                        (inn_with_toss["inning"] == 1) &
-                        (inn_with_toss["toss_winner"] != inn_with_toss.get("batting_team", ""))]
-                    if len(others) >= 5:
-                        self._toss_bat_first_adj = float(
-                            bat_first_inn1["pp_runs"].mean() - others["pp_runs"].mean())
             except Exception:
                 pass
 
-        # ── venue score bounds ───────────────────────────────────────────── #
         for venue, grp in inn_pp.groupby("venue", observed=True):
             runs = grp["pp_runs"]
-            # ENHANCEMENT 6: widen upper bound to allow high scores through
             self._venue_bounds[venue] = (
                 float(runs.quantile(0.05)),
-                float(runs.quantile(0.97)),   # was 0.95 → now 0.97
+                float(runs.quantile(0.97)),
             )
 
-        # ── ML features & training ────────────────────────────────────────── #
         self._fit_ml_models(inn_pp)
         self._is_fitted = True
 
@@ -1085,12 +1104,12 @@ class MyModel:
     # ─────────────────────────────────────────────────────────────────────── #
 
     def _build_features(self, inn_pp: pd.DataFrame) -> pd.DataFrame:
-        """Build feature matrix from match-level PP dataframe."""
         feats = pd.DataFrame()
         feats["year"]        = inn_pp["year"].astype(float)
         feats["inning"]      = inn_pp["inning"].astype(float)
         feats["is_recent"]   = (inn_pp["year"] >= self._recent_cutoff).astype(float)
         feats["is_2025"]     = (inn_pp["year"] == 2025).astype(float)
+        feats["is_2026"]     = (inn_pp["year"] == 2026).astype(float)
 
         if "batting_team" in inn_pp.columns:
             bat_enc = LabelEncoder()
@@ -1101,7 +1120,6 @@ class MyModel:
                 lambda t: self._ti_avg.get(t, self._pp_global_avg))
             feats["bat_hist_avg_r"] = inn_pp["batting_team"].map(
                 lambda t: self._ti_avg_r.get(t, self._pp_global_avg_r))
-            # ENHANCEMENT: team correction feature
             feats["bat_correction"] = inn_pp["batting_team"].map(
                 lambda t: _get_team_batting_correction(t))
             feats["bat_aggression"] = inn_pp["batting_team"].map(
@@ -1140,7 +1158,6 @@ class MyModel:
             feats["venue_avg_r"]    = self._pp_global_avg_r
             feats["venue_2025_avg"] = self._pp_global_avg
 
-        # recency weight as feature
         feats["recency_w"] = inn_pp["year"].map(_recency_weight)
         return feats
 
@@ -1151,31 +1168,29 @@ class MyModel:
             X = self._build_features(inn_pp)
             y = inn_pp["pp_runs"].values.astype(float)
 
-            # sample weights: heavier on recent
             w = inn_pp["year"].map(_recency_weight).values
             w = w / w.sum() * len(w)
 
             tscv = TimeSeriesSplit(n_splits=3)
 
             self._xgb = xgb.XGBRegressor(
-                n_estimators=120, max_depth=4, learning_rate=0.08,
+                n_estimators=150, max_depth=5, learning_rate=0.07,
                 subsample=0.8, colsample_bytree=0.8,
                 reg_alpha=1.0, reg_lambda=2.0,
                 random_state=42, verbosity=0, n_jobs=1)
             self._xgb.fit(X, y, sample_weight=w)
 
             self._et = ExtraTreesRegressor(
-                n_estimators=80, max_depth=5, min_samples_leaf=5,
+                n_estimators=100, max_depth=6, min_samples_leaf=4,
                 random_state=42, n_jobs=1)
             self._et.fit(X, y, sample_weight=w)
 
             self._gbm = HistGradientBoostingRegressor(
-                max_iter=100, max_depth=4, learning_rate=0.08,
-                min_samples_leaf=8, l2_regularization=1.0,
+                max_iter=120, max_depth=5, learning_rate=0.07,
+                min_samples_leaf=6, l2_regularization=1.0,
                 random_state=42)
             self._gbm.fit(X, y)
 
-            # meta-learner on out-of-fold predictions
             oof_xgb = np.zeros(len(y))
             oof_et  = np.zeros(len(y))
             oof_gbm = np.zeros(len(y))
@@ -1185,7 +1200,7 @@ class MyModel:
                 wtr = w[tr_idx]
 
                 m_xgb = xgb.XGBRegressor(
-                    n_estimators=80, max_depth=4, learning_rate=0.08,
+                    n_estimators=100, max_depth=5, learning_rate=0.07,
                     subsample=0.8, colsample_bytree=0.8,
                     reg_alpha=1.0, reg_lambda=2.0,
                     random_state=42, verbosity=0, n_jobs=1)
@@ -1193,14 +1208,14 @@ class MyModel:
                 oof_xgb[val_idx] = m_xgb.predict(Xval)
 
                 m_et = ExtraTreesRegressor(
-                    n_estimators=60, max_depth=5, min_samples_leaf=5,
+                    n_estimators=80, max_depth=6, min_samples_leaf=4,
                     random_state=42, n_jobs=1)
                 m_et.fit(Xtr, ytr, sample_weight=wtr)
                 oof_et[val_idx] = m_et.predict(Xval)
 
                 m_gbm = HistGradientBoostingRegressor(
-                    max_iter=80, max_depth=4, learning_rate=0.08,
-                    min_samples_leaf=8, l2_regularization=1.0,
+                    max_iter=100, max_depth=5, learning_rate=0.07,
+                    min_samples_leaf=6, l2_regularization=1.0,
                     random_state=42)
                 m_gbm.fit(Xtr, ytr)
                 oof_gbm[val_idx] = m_gbm.predict(Xval)
@@ -1212,20 +1227,17 @@ class MyModel:
         except Exception:
             pass
 
-    def _predict_ml(self, row_feat: dict) -> float | None:
+    def _predict_ml(self, row_feat: dict):
         if self._xgb is None or self._meta is None:
             return None
         try:
-            df = pd.DataFrame([row_feat])
-            # align columns
             X = self._build_features(pd.DataFrame([{
-                "year":         row_feat.get("year", 2025),
+                "year":         row_feat.get("year", 2026),
                 "inning":       row_feat.get("inning", 1),
                 "batting_team": row_feat.get("batting_team", ""),
                 "bowling_team": row_feat.get("bowling_team", ""),
                 "venue":        row_feat.get("venue", ""),
             }]))
-            # handle unseen labels
             for col in ["bat_team_enc", "bowl_team_enc", "venue_enc"]:
                 if col not in X.columns:
                     X[col] = 0.0
@@ -1238,7 +1250,7 @@ class MyModel:
             return None
 
     # ─────────────────────────────────────────────────────────────────────── #
-    #  HEURISTIC PREDICTION  (enhanced)                                       #
+    #  HEURISTIC PREDICTION                                                   #
     # ─────────────────────────────────────────────────────────────────────── #
 
     def _heuristic_predict(
@@ -1247,19 +1259,11 @@ class MyModel:
         bowling_team: str,
         venue: str,
         inning: int = 1,
-        inn1_score: float | None = None,
-        toss_winner: str | None = None,
-        toss_decision: str | None = None,
+        inn1_score=None,
+        toss_winner=None,
+        toss_decision=None,
+        is_playoff: bool = False,
     ) -> float:
-        """
-        Enhanced heuristic prediction with:
-          1. Per-team batting corrections from 2025 residual analysis.
-          2. Inn2 chase-pressure boost.
-          3. Higher 2025 global offset (8.0 vs 4.5).
-          4. Softer upper bound (0.97 quantile).
-          5. Reduced weight on away discount when team correction is large.
-        """
-        # ── base: venue prior ──────────────────────────────────────────── #
         sd = _get_stadium_data(venue)
         venue_key = _get_venue_key(venue)
 
@@ -1268,132 +1272,92 @@ class MyModel:
         else:
             base = _get_venue_prior(venue)
 
-        # ── 2025 venue uplift ─────────────────────────────────────────── #
         v25 = self._pp_2025_venue.get(venue)
         if v25 is not None and self._pp_2025_n_venue.get(venue, 0) >= 3:
-            # blend historical with 2025 venue specific
             base = 0.50 * base + 0.50 * v25
 
-        # ── global 2025 offset ────────────────────────────────────────── #
-        base += _GLOBAL_2025_PP_OFFSET
+        base += _GLOBAL_2026_PP_OFFSET
 
-        # ── team batting correction (NEW in v14) ──────────────────────── #
         team_corr = _get_team_batting_correction(batting_team)
 
-        # ── away discount — but reduce it when team correction is large ── #
         away_adj = _away_team_pp_profile(batting_team, venue)
         if abs(team_corr) > 10:
-            # Large correction = team is genuinely different from historical;
-            # don't let away discount fully offset the correction
             away_adj = away_adj * 0.50
         base += away_adj
 
-        # ── team batting history shrinkage ────────────────────────────── #
         ti_r = self._ti_avg_r.get(batting_team, self._pp_global_avg_r)
         ti_n = self._ti_n.get(batting_team, 0)
         shrunk_ti = _shrink(ti_r, base, ti_n, k=self._k_team)
         base = 0.65 * base + 0.35 * shrunk_ti
 
-        # ── bowling team adjustment ───────────────────────────────────── #
         bq = _get_team_pp_bowling_quality(bowling_team)
         bowl_hist = self._vbowl_avg_r.get(bowling_team, self._pp_global_avg_r)
         bowl_adj = (bowl_hist - self._pp_global_avg_r) * 0.30
         base += bowl_adj * (2.0 - bq)
 
-        # ── venue × team interaction ──────────────────────────────────── #
         vt_key = (venue, batting_team)
         if vt_key in self._vt_avg_r:
             vt_r = self._vt_avg_r[vt_key]
             vt_n = self._vt_n.get(vt_key, 0)
             base = _shrink(vt_r, base, vt_n, k=self._k_vt)
 
-        # ── matchup calibration ───────────────────────────────────────── #
         mc1, mc2, mc_conf = _get_matchup_calibration(batting_team, bowling_team, venue)
         mc_adj = (mc1 if inning == 1 else mc2) * mc_conf
         base += mc_adj
 
-        # ── home PP calibration ───────────────────────────────────────── #
         vk2 = venue_key or ""
         hb1, hb2, hb_conf = _get_home_pp_calibration(batting_team, vk2)
         home_boost = (hb1 if inning == 1 else hb2) * hb_conf
         base += home_boost
 
-        # ── nature / aggression score ─────────────────────────────────── #
         nature = (sd["nature"] if sd else _VENUE_NATURE.get(vk2, "balanced"))
         ns = _effective_nature_score(vk2, nature, batting_team)
         aggression = _get_team_pp_aggression(batting_team)
         base += ns * aggression * 2.5
 
-        # ── apply per-team batting correction (v14 key addition) ──────── #
-        # Dampen the correction proportionally when the venue prior is already
-        # high (>=75). This prevents stacking corrections onto already-high
-        # venues like uppal (87.5) or narendra (80).
         venue_prior_raw = _get_venue_prior(venue)
-        # correction_weight decays from 0.55 at low-scoring venues to ~0.25
-        # at ultra-high-scoring ones, and is 0 if the team has no correction.
         correction_weight = max(0.25, 0.55 - max(0.0, venue_prior_raw - 65.0) / 80.0)
         base += team_corr * correction_weight
 
-        # ── inning 2 adjustments ──────────────────────────────────────── #
         if inning == 2:
-            # global inn-diff from training data
             base += self._pp_global_diff_r * 0.40
-
-            # ENHANCEMENT: chase pressure boost
             chase_boost = _get_inn2_chase_boost(
                 inn1_score if inn1_score is not None else base)
             base += chase_boost
-
-            # if we know the actual inn1 score, use target pressure
             if inn1_score is not None:
-                inn1_baseline = _get_venue_prior(venue) + _GLOBAL_2025_PP_OFFSET
+                inn1_baseline = _get_venue_prior(venue) + _GLOBAL_2026_PP_OFFSET
                 diff = inn1_score - inn1_baseline
-                # scale chase aggression by target size
                 base += np.clip(diff * 0.18, -8, 12)
+            # ── Dew bonus for night matches (all playoff venues) ────────── #
+            dew_bonus = _get_dew_inn2_bonus(venue)
+            base += dew_bonus
 
-        # ── toss adjustment ───────────────────────────────────────────── #
         if toss_winner and toss_decision:
             if (inning == 2 and
                     toss_decision.lower().strip() == "field" and
                     toss_winner.lower() in batting_team.lower()):
                 base += self._toss_inn2_adj * 0.5
 
-        # ── venue bounds (widened in v14) ─────────────────────────────── #
+        # ── Playoff pressure discount ─────────────────────────────────────#
+        # Knockout cricket: batters more cautious in PP; toss/conditions magnified
+        if is_playoff:
+            base += _PLAYOFF_PRESSURE_DISCOUNT
+
         if venue in self._venue_bounds:
             lo, hi = self._venue_bounds[venue]
-            # ENHANCEMENT: don't clip top — only apply a soft nudge
             if base < lo:
                 base = lo + (base - lo) * 0.3
-        # no hard upper clip — let genuine high scores through
 
-        # ── final floor ───────────────────────────────────────────────── #
         return float(max(base, 15.0))
 
     # ─────────────────────────────────────────────────────────────────────── #
     #  PREDICT — public API                                                   #
-    #                                                                         #
-    #  The runner calls:  predictions = model.predict(test_data)             #
-    #  where test_data is a DataFrame with columns:                           #
-    #    id, venue, innings, batting_team, bowling_team,                      #
-    #    "Batsman's Player Id", "Bowler's Player id (opponent)"               #
-    #                                                                         #
-    #  Must return a DataFrame/Series of numeric predictions aligned to       #
-    #  test_data (one value per row), OR a dict/list of the same length.      #
     # ─────────────────────────────────────────────────────────────────────── #
 
-    def predict(self, test_data):
-        """
-        Accept a DataFrame (from runner) OR individual keyword arguments
-        (for internal/convenience use).
-
-        DataFrame mode  → returns pd.Series of predicted PP runs, indexed
-                          by test_data.index (or 'id' column if present).
-        """
-        # ── DataFrame mode (runner path) ──────────────────────────────── #
+    def predict(self, test_data, is_playoff: bool = False):
+        self._is_playoff = is_playoff
         if isinstance(test_data, pd.DataFrame):
-            return self._predict_dataframe(test_data)
-
-        # ── Legacy / convenience: called with a dict ──────────────────── #
+            return self._predict_dataframe(test_data, is_playoff=is_playoff)
         if isinstance(test_data, dict):
             return self._predict_single(
                 batting_team  = test_data.get("batting_team", ""),
@@ -1403,21 +1367,12 @@ class MyModel:
                 inn1_score    = test_data.get("inn1_score"),
                 toss_winner   = test_data.get("toss_winner"),
                 toss_decision = test_data.get("toss_decision"),
+                is_playoff    = is_playoff,
             )
-
-        # ── Fallback: treat as a single row Series ─────────────────────── #
         raise TypeError(
-            f"predict() expects a DataFrame or dict, got {type(test_data).__name__}. "
-            "Usage: model.predict(test_df)")
+            f"predict() expects a DataFrame or dict, got {type(test_data).__name__}.")
 
-    def _predict_dataframe(self, test_data):
-        """
-        Core prediction loop called by the competition runner.
-
-        Returns a DataFrame with columns [id, predicted_score] — one row per
-        input row, preserving order.  The runner accepts DataFrame/dict/
-        list-of-dicts; returning DataFrame satisfies all three checks.
-        """
+    def _predict_dataframe(self, test_data, is_playoff: bool = False):
         df = test_data.reset_index(drop=True)
         col_map = {c.lower().strip(): c for c in df.columns}
 
@@ -1440,23 +1395,30 @@ class MyModel:
         bowling_teams = _col(["bowling_team", "bowling team", "bowl_team"],default="")
         toss_w        = _col(["toss_winner",  "toss winner"],              default=None)
         toss_d        = _col(["toss_decision","toss decision"],            default=None)
+        playoff_col   = _col(["is_playoff"],                               default=None)
 
-        inn1_cache = {}   # (venue, bat, bowl) lower-cased -> predicted inn1 runs
+        inn1_cache = {}
         rows = []
 
         for i in range(len(df)):
             bat   = "" if _safe_na(batting_teams.iloc[i]) else str(batting_teams.iloc[i]).strip()
             bowl  = "" if _safe_na(bowling_teams.iloc[i]) else str(bowling_teams.iloc[i]).strip()
             venue = "" if _safe_na(venues.iloc[i])        else str(venues.iloc[i]).strip()
+            venue = validate_venue(venue)
             inn   = 1  if _safe_na(innings_s.iloc[i])     else int(innings_s.iloc[i])
             tw    = None if _safe_na(toss_w.iloc[i])      else str(toss_w.iloc[i])
             td    = None if _safe_na(toss_d.iloc[i])      else str(toss_d.iloc[i])
 
-            # carry inn1 prediction forward into its matching inn2 row
+            # Row-level playoff override if column present
+            row_playoff = is_playoff
+            if not _safe_na(playoff_col.iloc[i]):
+                row_playoff = bool(playoff_col.iloc[i])
+
             cache_key  = (venue.lower(), bowl.lower(), bat.lower())
             inn1_score = inn1_cache.get(cache_key)
 
-            result   = self._predict_single(bat, bowl, venue, inn, inn1_score, tw, td)
+            result   = self._predict_single(bat, bowl, venue, inn, inn1_score, tw, td,
+                                             is_playoff=row_playoff)
             pred_val = result["predicted_score"]
 
             row_id = i if _safe_na(ids.iloc[i]) else ids.iloc[i]
@@ -1476,17 +1438,15 @@ class MyModel:
         inn1_score=None,
         toss_winner=None,
         toss_decision=None,
+        is_playoff: bool = False,
     ) -> dict:
-        """
-        Predict PP runs for a single innings.
-        Returns dict with keys: predicted_score, low, high, nature, confidence, method.
-        """
         h = self._heuristic_predict(
             batting_team, bowling_team, venue, inning,
-            inn1_score, toss_winner, toss_decision)
+            inn1_score, toss_winner, toss_decision,
+            is_playoff=is_playoff)
 
         ml_row = {
-            "year":         2025,
+            "year":         2026,
             "inning":       inning,
             "batting_team": batting_team,
             "bowling_team": bowling_team,
@@ -1494,7 +1454,6 @@ class MyModel:
         }
         ml_pred = self._predict_ml(ml_row)
 
-        # ENHANCEMENT 7: dynamic ensemble weight based on training size.
         if ml_pred is not None and self._n_train >= 50:
             ml_weight = min(0.35, 0.10 + 0.005 * (self._n_train - 50))
             pred = (1.0 - ml_weight) * h + ml_weight * ml_pred
@@ -1503,12 +1462,15 @@ class MyModel:
             pred = h
             method = "heuristic"
 
-        # ── prediction interval ────────────────────────────────────────── #
         sd_data = _get_stadium_data(venue)
         if sd_data:
             spread = sd_data.get("inn1_spread" if inning == 1 else "inn2_spread", 20.0)
         else:
             spread = 22.0
+        # Tighter CI in playoffs (less randomness with high stakes)
+        if is_playoff:
+            spread = spread * 0.90
+
         low  = max(15.0, pred - spread * 0.75)
         high = pred + spread * 0.90
 
@@ -1526,6 +1488,7 @@ class MyModel:
             "nature":         nature,
             "confidence":     round(base_conf, 2),
             "method":         method,
+            "is_playoff":     is_playoff,
         }
 
     # ─────────────────────────────────────────────────────────────────────── #
@@ -1539,23 +1502,71 @@ class MyModel:
         venue: str,
         toss_winner=None,
         toss_decision=None,
+        is_playoff: bool = False,
     ) -> dict:
-        """Predict both innings PP totals for a match."""
         inn1 = self._predict_single(
             batting_team=team1, bowling_team=team2,
             venue=venue, inning=1,
-            toss_winner=toss_winner, toss_decision=toss_decision)
+            toss_winner=toss_winner, toss_decision=toss_decision,
+            is_playoff=is_playoff)
 
         inn2 = self._predict_single(
             batting_team=team2, bowling_team=team1,
             venue=venue, inning=2,
             inn1_score=inn1["predicted_score"],
-            toss_winner=toss_winner, toss_decision=toss_decision)
+            toss_winner=toss_winner, toss_decision=toss_decision,
+            is_playoff=is_playoff)
 
         return {
-            "inn1": inn1,
-            "inn2": inn2,
-            "venue": venue,
-            "team1": team1,
-            "team2": team2,
+            "inn1":      inn1,
+            "inn2":      inn2,
+            "venue":     venue,
+            "team1":     team1,
+            "team2":     team2,
+            "is_playoff": is_playoff,
         }
+
+if __name__ == "__main__":
+    import sys, os
+
+    TEST_CSV_PATH       = "/var/test_file.csv"
+    SUBMISSION_CSV_PATH = "/var/submission.csv"
+    LOGS_PATH           = "/var/logs.txt"
+
+    def log(msg):
+        print(msg)
+        try:
+            with open(LOGS_PATH, "a") as f:
+                f.write(msg + "\n")
+        except Exception:
+            pass
+
+    log("=== IPL PP Score Predictor ===")
+
+    model = MyModel()
+    model._is_fitted       = True
+    model._n_train         = 0    # heuristic-only; no CSV data in container
+    model._pp_global_avg   = 55.0
+    model._pp_global_avg_r = 55.0
+
+    try:
+        test_df = pd.read_csv(TEST_CSV_PATH)
+        log(f"Loaded test file: {len(test_df)} rows, columns: {list(test_df.columns)}")
+    except Exception as e:
+        log(f"ERROR loading test CSV: {e}")
+        sys.exit(1)
+
+    try:
+        results = model.predict(test_df, is_playoff=False)
+        log(f"Predictions complete: {len(results)} rows")
+    except Exception as e:
+        log(f"ERROR during prediction: {e}")
+        sys.exit(1)
+
+    try:
+        results.to_csv(SUBMISSION_CSV_PATH, index=False)
+        log(f"Submission written to {SUBMISSION_CSV_PATH}")
+        log(results.to_string(index=False))
+    except Exception as e:
+        log(f"ERROR writing submission: {e}")
+        sys.exit(1)
