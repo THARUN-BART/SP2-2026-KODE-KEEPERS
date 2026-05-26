@@ -120,4 +120,6 @@ Where `ml_weight` grows with training data size (capped at 0.35), ensuring the h
 
 ---
 
-*Built for the Sona Power Predict – 2026 competition.*
+## License
+
+This project is licensed under the MIT License.
